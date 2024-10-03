@@ -1,0 +1,13 @@
+.search-field {
+  width: 100%;
+  max-width: 400px; /* Controla el ancho del campo de búsqueda */
+  margin-bottom: 16px;
+}
+
+mat-form-field {
+  background-color: white;
+}
+
+mat-icon {
+  color: #1976d2; /* Azul oscuro para el ícono */
+}

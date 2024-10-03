@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>{{ data ? 'Editar Usuario' : 'Crear Usuario' }}</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="user.nombre" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Edad</mat-label>
+    <input matInput [(ngModel)]="user.edad" required type="number">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Rol</mat-label>
+    <mat-select [(ngModel)]="user.rol" required>
+      <mat-option *ngFor="let role of roles" [value]="role">{{ role.nombre }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de Ingreso</mat-label>
+    <input matInput [(ngModel)]="user.fechaIngreso" required type="date">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Guardar</button>
+</div>

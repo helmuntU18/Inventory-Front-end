@@ -1,0 +1,8 @@
+<mat-form-field appearance="outline" class="search-field">
+  <mat-label>Buscar</mat-label>
+  <input matInput (input)="filterSearch($event)" placeholder="Buscar por cualquier campo">
+  <button mat-icon-button matSuffix aria-label="Clear" *ngIf="filterValue" (click)="clearFilter()">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <mat-icon matPrefix>search</mat-icon>
+</mat-form-field>

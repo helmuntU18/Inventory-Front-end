@@ -1,0 +1,52 @@
+<div class="inventory-container">
+  <h2 class="mat-text-center">Inventario</h2>
+  <div class="search-button-container">
+    <app-filter (filterChange)="onFilterSearchChange($event)"></app-filter>
+    <button mat-raised-button color="primary" class="crear" (click)="openCreateDialog()">
+      <mat-icon>add</mat-icon> Crear Mercancía
+    </button>
+  </div>
+  <div style="overflow: auto;">
+    <table mat-table [dataSource]="mercancias" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell mat-primary"> ID </th>
+        <td mat-cell *matCellDef="let mercancia" class="mat-cell"> {{ mercancia.id }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombreProducto">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell mat-primary"> Producto </th>
+        <td mat-cell *matCellDef="let mercancia"> {{ mercancia.nombreProducto }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell mat-primary"> Cantidad </th>
+        <td mat-cell *matCellDef="let mercancia"> {{ mercancia.cantidad }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaEntrada">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell mat-primary"> Fecha Entrada </th>
+        <td mat-cell *matCellDef="let mercancia"> {{ mercancia.fechaEntrada | date }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="usuario">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell mat-primary"> Usuario Creador </th>
+        <td mat-cell *matCellDef="let mercancia"> {{ mercancia.usuario?.nombre || 'Desconocido' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="usuarioModificacion">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell mat-primary"> Usuario Modificación </th>
+        <td mat-cell *matCellDef="let mercancia"> {{ mercancia.usuario_modificacion?.nombre || 'Desconocido' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaModificacion">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell mat-primary"> Fecha Modificación </th>
+        <td mat-cell *matCellDef="let mercancia"> {{ mercancia.fecha_modificacion | date }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['id', 'nombreProducto', 'cantidad', 'usuario', 'fechaEntrada', 'usuarioModificacion', 'fechaModificacion']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['id', 'nombreProducto', 'cantidad', 'usuario', 'fechaEntrada', 'usuarioModificacion', 'fechaModificacion'];"></tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="paginator"></mat-paginator>
+</div>
